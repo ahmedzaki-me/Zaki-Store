@@ -28,7 +28,7 @@ export default function Header() {
         >
           <div className="relative size-9 overflow-hidden rounded-md ring-2 ring-primary/20 transition-all duration-200 group-hover:ring-primary/50">
             <Image
-              src="/logo.png"
+              src="/Logo.png"
               alt="Zaki Store logo"
               fill
               className="object-cover"

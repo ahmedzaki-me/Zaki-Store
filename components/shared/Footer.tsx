@@ -46,7 +46,7 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-4">
             <Link href="/">
               <Image
-                src="/logo.png"
+                src="/Logo.png"
                 alt="Zaki store logo"
                 width={72}
                 height={72}

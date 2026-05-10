@@ -41,7 +41,7 @@ export function MobileMenu({
           <Link href="/" className="flex items-center gap-2.5">
             <div className="relative size-8 overflow-hidden rounded-md ring-2 ring-primary/20">
               <Image
-                src="/logo.png"
+                src="/Logo.png"
                 alt="Zaki Store logo"
                 fill
                 className="object-cover"
