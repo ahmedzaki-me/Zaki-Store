@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { MapPin, Clock, PhoneCall } from "lucide-react";
+import { FloatingDeco } from "../HeroSection";
 
 const SOCIAL_LINKS = [
   {
@@ -40,7 +41,77 @@ export default function Footer() {
       className="mt-10  border-t border-primary/30 text-center bg-primary/10 "
       id="about"
     >
-      <div className="container mx-auto px-13 py-10 ">
+      <div className="relative container mx-auto px-13 py-10 ">
+        <FloatingDeco
+          className="top-[8%] left-[4%]"
+          emoji="🌿"
+          size="text-3xl"
+          rotate="rotate-12"
+          opacity="opacity-40"
+        />
+        <FloatingDeco
+          className="top-[15%] left-[18%]"
+          emoji="🧅"
+          size="text-xl"
+          rotate="-rotate-6"
+          opacity="opacity-40"
+        />
+        <FloatingDeco
+          className="top-[6%]  right-[22%]"
+          emoji="🫙"
+          size="text-2xl"
+          rotate="rotate-6"
+          opacity="opacity-40"
+        />
+        <FloatingDeco
+          className="top-[10%] right-[8%]"
+          emoji="🌶️"
+          size="text-3xl"
+          rotate="-rotate-12"
+          opacity="opacity-40"
+        />
+        <FloatingDeco
+          className="top-[40%]  right-[60%]"
+          emoji="🫙"
+          size="text-2xl"
+          rotate="rotate-6"
+          opacity="opacity-40"
+        />
+        <FloatingDeco
+          className="top-[80%] right-45%]"
+          emoji="🌶️"
+          size="text-3xl"
+          rotate="-rotate-12"
+          opacity="opacity-40"
+        />
+        <FloatingDeco
+          className="top-[40%] right-[3%]"
+          emoji="🧀"
+          size="text-2xl"
+          rotate="rotate-12"
+          opacity="opacity-40"
+        />
+        <FloatingDeco
+          className="bottom-[18%] right-[14%]"
+          emoji="🥬"
+          size="text-2xl"
+          rotate="-rotate-6"
+          opacity="opacity-40"
+        />
+        <FloatingDeco
+          className="bottom-[28%] left-[8%]"
+          emoji="🍅"
+          size="text-3xl"
+          rotate="rotate-6"
+          opacity="opacity-40"
+        />
+        <FloatingDeco
+          className="bottom-[32%] left-[2%]"
+          emoji="🥩"
+          size="text-xl"
+          rotate="-rotate-12"
+          opacity="opacity-40"
+        />
         <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-around ">
           {/* Logo + Social Icons */}
           <div className="flex flex-col items-center gap-4">
@@ -94,7 +165,7 @@ export default function Footer() {
               <PhoneCall className="h-6 w-6 shrink-0" />
               <div dir="ltr">
                 <a
-                  href="tel:+201515199857"
+                  href="tel:+201286113602"
                   className="transition-opacity hover:text-primary duration-300"
                 >
                   +201286113602

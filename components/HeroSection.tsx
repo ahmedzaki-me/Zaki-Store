@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 // Floating decorative burger ingredients
-const FloatingDeco = ({
+export const FloatingDeco = ({
   className,
   emoji,
   size = "text-2xl",
