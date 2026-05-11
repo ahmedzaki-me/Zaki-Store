@@ -5,8 +5,9 @@ import { cn } from "@/lib/utils";
 import { Cart } from "./Cart";
 import { MobileMenu } from "./MobileMenu";
 const navLinks = [
+  { label: "Home", href: "/" },
   { label: "About", href: "#about" },
-  { label: "Menu", href: "#menu" },
+  { label: "Menu", href: "/#menu" },
   { label: "Location", href: "#location" },
   { label: "Checkout", href: "/checkout" },
 ];
