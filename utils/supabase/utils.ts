@@ -4,7 +4,10 @@ import { createPublicClient } from "./public";
 export const getCategories = unstable_cache(
   async () => {
     const supabase = createPublicClient();
-    const { data } = await supabase.from("categories").select("id, name");
+    const { data } = await supabase
+      .from("categories")
+      .select("id, name")
+      .order("id", { ascending: true });
     return data;
   },
   ["categories-list"],

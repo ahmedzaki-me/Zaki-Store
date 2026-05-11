@@ -9,17 +9,11 @@ export default function RealtimeRefresher() {
 
   useEffect(() => {
     const channel = supabase
-      .channel("store-changes")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "items" },
-        () => router.refresh(),
-      )
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "categories" },
-        () => router.refresh(),
-      )
+      .channel("cache-control")
+      .on("broadcast", { event: "revalidated" }, (payload) => {
+        console.log("Cache cleared for:", payload.payload.table);
+        router.refresh();
+      })
       .subscribe();
 
     return () => {
