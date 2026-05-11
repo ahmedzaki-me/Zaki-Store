@@ -22,11 +22,26 @@ export async function POST(req: NextRequest) {
     const cookieStore = await cookies();
     const supabase = createClient(cookieStore);
 
-    await supabase.channel("cache-control").send({
-      type: "broadcast",
-      event: "revalidated",
-      payload: { table },
-    });
+    await fetch(
+      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/realtime/v1/api/broadcast`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: process.env.SUPABASE_SERVICE_ROLE_KEY!,
+          Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY!}`,
+        },
+        body: JSON.stringify({
+          messages: [
+            {
+              topic: "cache-control",
+              event: "revalidated",
+              payload: { table },
+            },
+          ],
+        }),
+      },
+    );
 
     return NextResponse.json({
       revalidated: true,
