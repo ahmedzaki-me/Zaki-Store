@@ -1,7 +1,5 @@
 import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
 
 export async function POST(req: NextRequest) {
   const secret = req.headers.get("x-webhook-secret");
@@ -18,9 +16,6 @@ export async function POST(req: NextRequest) {
     } else if (table === "categories") {
       revalidateTag("categories-tag", { expire: 0 });
     }
-
-    const cookieStore = await cookies();
-    const supabase = createClient(cookieStore);
 
     await fetch(
       `${process.env.NEXT_PUBLIC_SUPABASE_URL}/realtime/v1/api/broadcast`,

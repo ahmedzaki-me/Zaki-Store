@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 
-export function RealtimeCacheListener() {
+export default function RealtimeCacheListener() {
   const router = useRouter();
 
   useEffect(() => {
