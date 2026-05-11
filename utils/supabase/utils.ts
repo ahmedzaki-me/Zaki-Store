@@ -15,15 +15,9 @@ export const getCategories = unstable_cache(
 );
 
 export const getItems = unstable_cache(
-  async (categoryId) => {
+  async () => {
     const supabase = createPublicClient();
-    let query = supabase.from("items").select("*");
-
-    if (categoryId && categoryId !== "all") {
-      query = query.eq("category_id", categoryId);
-    }
-
-    const { data } = await query;
+    const { data } = await supabase.from("items").select("*");
     return data;
   },
   ["items-list"],

@@ -1,24 +1,12 @@
-import { ItemCard } from "./shared/ItemCard";
-import CategoryFilters from "./shared/CategoryFilters";
-
 import { getCategories, getItems } from "@/utils/supabase/utils";
+import MenuClient from "./shared/MenuClient";
 
-export default async function Menu({
-  searchParams,
-}: {
-  searchParams: Promise<{ category?: string }>;
-}) {
-
-  const { category } = (await searchParams) ?? {};
-
-  const [items, categories] = await Promise.all([
-    getItems(category),
-    getCategories(),
-  ]);
+export default async function Menu() {
+  const [items, categories] = await Promise.all([getItems(), getCategories()]);
 
   return (
     <section
-      className="container mx-auto mb-10 px-2 py-3 overflow-x-hidden "
+      className="container mx-auto mb-10 px-2 py-3 overflow-x-hidden"
       id="menu"
     >
       <div className="bg-background">
@@ -33,21 +21,7 @@ export default async function Menu({
           </span>
         </h2>
 
-        <CategoryFilters
-          categories={categories ?? []}
-          currentCategory={category}
-        />
-
-        <div className="relative grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] w-full gap-5 px-5 lg:px-13">
-          {items?.map((item) => (
-            <ItemCard
-              key={item.id}
-              imgSrc={item.image_url}
-              description={item.description}
-              price={item.price}
-            />
-          ))}
-        </div>
+        <MenuClient items={items ?? []} categories={categories ?? []} />
       </div>
     </section>
   );

@@ -5,7 +5,6 @@ import {
   CardContent,
   CardDescription,
   CardTitle,
-  CardFooter,
 } from "@/components/ui/card";
 import { ShoppingCart, Star } from "lucide-react";
 
@@ -14,12 +13,14 @@ import { cn } from "@/lib/utils";
 
 interface ItemCardProps {
   className?: string;
+  name: string;
   imgSrc: string;
   description?: string;
-  price: string;
+  price: number;
 }
 export function ItemCard({
   className,
+  name,
   imgSrc,
   description,
   price,
@@ -58,7 +59,7 @@ export function ItemCard({
       </div>
 
       <CardContent className="relative">
-        <CardTitle>Hazelnut Latte</CardTitle>
+        <CardTitle>{name}</CardTitle>
         {description && (
           <CardDescription className="min-h-[48px]">
             {description}

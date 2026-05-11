@@ -14,7 +14,12 @@ export default async function SecondSection() {
 
   const itemCards = data?.map((item) => {
     return (
-      <ItemCard imgSrc={item?.image_url} key={item.id} price={item.price} />
+      <ItemCard
+        imgSrc={item?.image_url}
+        key={item.id}
+        name={item.name}
+        price={item.price}
+      />
     );
   });
 

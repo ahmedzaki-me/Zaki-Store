@@ -1,5 +1,4 @@
 "use client";
-import { useRouter, usePathname } from "next/navigation";
 import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -11,12 +10,12 @@ type Category = { id: string; name: string };
 export default function CategoryFilters({
   categories,
   currentCategory,
+  onFilter,
 }: {
   categories: Category[];
-  currentCategory?: string;
+  currentCategory: string;
+  onFilter: (id: string) => void;
 }) {
-  const router = useRouter();
-  const pathname = usePathname();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -46,13 +45,8 @@ export default function CategoryFilters({
     });
   };
 
-  const handleFilter = (name: string) => {
-    router.push(`${pathname}?category=${name}`, { scroll: false });
-  };
-
   return (
     <div className="relative flex items-center justify-center my-5 w-full max-w-[600px] mx-auto">
-
       <Button
         variant="outline"
         size="icon"
@@ -65,8 +59,7 @@ export default function CategoryFilters({
         <ChevronLeft className="h-4 w-4" />
       </Button>
 
-
-      <Tabs value={currentCategory || "all"} className="w-full select-none text-sm">
+      <Tabs value={currentCategory} className="w-full select-none text-sm">
         <TabsList
           ref={scrollRef}
           className="py-5 flex w-full justify-start overflow-x-auto overflow-y-hidden whitespace-nowrap rounded-lg bg-muted scrollbar-hide"
@@ -74,7 +67,7 @@ export default function CategoryFilters({
           <TabsTrigger
             value="all"
             className="shrink-0 cursor-pointer"
-            onClick={() => handleFilter("all")}
+            onClick={() => onFilter("all")}
           >
             All
           </TabsTrigger>
@@ -83,14 +76,13 @@ export default function CategoryFilters({
               key={cat.id}
               value={cat.id}
               className="shrink-0 cursor-pointer"
-              onClick={() => handleFilter(cat.id)}
+              onClick={() => onFilter(cat.id)}
             >
               {cat.name}
             </TabsTrigger>
           ))}
         </TabsList>
       </Tabs>
-
 
       <Button
         variant="outline"
