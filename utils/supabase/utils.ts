@@ -1,12 +1,9 @@
 import { unstable_cache } from "next/cache";
-import { cookies } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
-
-const cookieStore = await cookies();
-const supabase = createClient(cookieStore);
+import { createPublicClient } from "./public";
 
 export const getCategories = unstable_cache(
   async () => {
+    const supabase = createPublicClient();
     const { data } = await supabase.from("categories").select("id, name");
     return data;
   },
@@ -16,6 +13,7 @@ export const getCategories = unstable_cache(
 
 export const getItems = unstable_cache(
   async (categoryId) => {
+    const supabase = createPublicClient();
     let query = supabase.from("items").select("*");
 
     if (categoryId && categoryId !== "all") {
