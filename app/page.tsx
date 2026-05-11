@@ -9,9 +9,9 @@ export default async function Home({
 }: {
   searchParams: Promise<{ category?: string }>;
 }) {
+  RealtimeRefresher();
   return (
     <>
-      <RealtimeRefresher />
       <HeroSection />
       <SecondSection />
       <HowToUseSection />
