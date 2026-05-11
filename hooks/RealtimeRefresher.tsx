@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 
-export function useCacheRevalidation() {
+export default function useCacheRevalidation() {
   const router = useRouter();
 
   useEffect(() => {
