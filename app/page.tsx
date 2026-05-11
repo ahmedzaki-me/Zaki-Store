@@ -2,12 +2,12 @@ import HeroSection from "@/components/HeroSection";
 import SecondSection from "@/components/SecondSection";
 import HowToUseSection from "@/components/HowToUseSection";
 import Menu from "@/components/Menu";
-// import { CacheRevalidationProvider } from "@/components/cache-revalidation-provider";
+import { CacheRevalidationProvider } from "@/components/CacheRevalidationProvider";
 
 export default async function Home() {
   return (
     <>
-      {/* <CacheRevalidationProvider /> */}
+      <CacheRevalidationProvider />
       <HeroSection />
       <SecondSection />
       <HowToUseSection />
