@@ -1,9 +1,10 @@
 "use client";
+
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 
-export default function RealtimeCacheListener() {
+export function useCacheRevalidation() {
   const router = useRouter();
 
   useEffect(() => {
@@ -11,23 +12,13 @@ export default function RealtimeCacheListener() {
 
     const channel = supabase
       .channel("cache-control")
-      .on(
-        "broadcast",
-        {
-          event: "revalidated",
-        },
-        (payload) => {
-          console.log("Cache updated:", payload);
-
-          router.refresh();
-        },
-      )
+      .on("broadcast", { event: "revalidated" }, () => {
+        router.refresh();
+      })
       .subscribe();
 
     return () => {
       supabase.removeChannel(channel);
     };
   }, [router]);
-
-  return null;
 }
