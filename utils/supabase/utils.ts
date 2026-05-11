@@ -11,7 +11,7 @@ export const getCategories = unstable_cache(
     return data;
   },
   ["categories-list"],
-  { tags: ["categories-tag"] },
+  { tags: ["categories-tag"], revalidate: false },
 );
 
 export const getItems = unstable_cache(
@@ -21,5 +21,5 @@ export const getItems = unstable_cache(
     return data;
   },
   ["items-list"],
-  { tags: ["items-tag"] },
+  { tags: ["items-tag"], revalidate: false },
 );
