@@ -63,9 +63,7 @@ export default function Header() {
 
         {/* ─── Right Actions ─── */}
         <div className="flex items-center gap-2">
-          {/* Cart */}
           <Cart />
-          {/* Mobile hamburger */}
           <MobileMenu navLinks={navLinks} />
         </div>
       </div>

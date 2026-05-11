@@ -147,7 +147,7 @@ export default function Footer() {
               href="https://maps.app.goo.gl/3kV7AjkdqneHpWPu6"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center flex-col gap-2 transition-opacity hover:text-primary"
+              className="flex items-center flex-col gap-2 transition-opacity hover:text-primary duration-300"
               id="location"
             >
               <MapPin className="mt-0.5 h-6 w-6 shrink-0" />

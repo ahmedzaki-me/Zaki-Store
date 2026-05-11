@@ -204,15 +204,7 @@ export default function HeroSection() {
 
       {/* Inline keyframes for floating animation */}
       <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(var(--tw-rotate, 0deg)); }
-          50%       { transform: translateY(-10px) rotate(var(--tw-rotate, 0deg)); }
-        }
-        .animate-float {
-          animation: float 5s ease-in-out infinite;
-        }
-        .animate-float:nth-child(odd)  { animation-duration: 6s; animation-delay: 0.5s; }
-        .animate-float:nth-child(even) { animation-duration: 4.5s; animation-delay: 1.2s; }
+
       `}</style>
     </section>
   );

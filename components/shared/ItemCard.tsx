@@ -5,6 +5,7 @@ import {
   CardContent,
   CardDescription,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
 import { ShoppingCart, Star } from "lucide-react";
 
@@ -56,18 +57,18 @@ export function ItemCard({
         </div>
       </div>
 
-      <CardContent>
+      <CardContent className="relative">
         <CardTitle>Hazelnut Latte</CardTitle>
         {description && (
-          <CardDescription className="pr-2">
-            Loaded with premium pepperoni slices and extra cheese
+          <CardDescription className="min-h-[48px]">
+            {description}
           </CardDescription>
         )}
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 mb-auto ">
           <Button
             size="icon"
-            className="flex justify-between items-center gap-2 ml-auto w-fit px-3 shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-0.5"
+            className=" flex justify-between items-center gap-2 ml-auto w-fit px-3 shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-0.5"
           >
             <ShoppingCart className="h-4 w-4 text-white" />
             <span>Add to cart</span>

@@ -141,14 +141,32 @@
 }
 
 @layer utilities {
-  /* إخفاء شريط التمرير لمتصفحات Chrome و Safari و Edge */
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
 
-  /* إخفاء شريط التمرير لمتصفح Firefox */
   .scrollbar-hide {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
   }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(var(--tw-rotate, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--tw-rotate, 0deg));
+  }
+}
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+.animate-float:nth-child(odd) {
+  animation-duration: 4s;
+  animation-delay: 0.5s;
+}
+.animate-float:nth-child(even) {
+  animation-duration: 2.5s;
+  animation-delay: 1.2s;
 }

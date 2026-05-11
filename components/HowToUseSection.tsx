@@ -63,7 +63,7 @@ export default function DeliveryService() {
             </div>
           ))}
         </div>
-        <hr className="text-primary my-10 border-primary border-1" />
+        <hr className="text-primary mt-20 mx-5 md:mx-20 lg:mx-50 border-primary border-1" />
       </div>
     </section>
   );

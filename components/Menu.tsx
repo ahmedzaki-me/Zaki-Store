@@ -1,27 +1,21 @@
-// app/menu/page.tsx
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
 import { ItemCard } from "./shared/ItemCard";
 import CategoryFilters from "./shared/CategoryFilters";
+
+import { getCategories, getItems } from "@/utils/supabase/utils";
 
 export default async function Menu({
   searchParams,
 }: {
   searchParams: Promise<{ category?: string }>;
 }) {
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
 
   const { category } = (await searchParams) ?? {};
 
-  const [{ data: items }, { data: categories }] = await Promise.all([
-    supabase
-      .from("items")
-      .select("*")
-      .match(category && category !== "all" ? { category_id: category } : {}),
-    supabase.from("categories").select("id, name"),
+  const [items, categories] = await Promise.all([
+    getItems(category),
+    getCategories(),
   ]);
-  console.log(items);
+
   return (
     <section
       className="container mx-auto mb-10 px-2 py-3 overflow-x-hidden "
