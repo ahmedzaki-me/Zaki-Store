@@ -1,4 +1,4 @@
-import { updateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -12,9 +12,9 @@ export async function POST(req: NextRequest) {
     const table = body.table;
 
     if (table === "items") {
-      updateTag("items-tag");
+      revalidateTag("items-tag", { expire: 0 });
     } else if (table === "categories") {
-      updateTag("categories-tag");
+      revalidateTag("categories-tag", { expire: 0 });
     }
 
     return NextResponse.json({
