@@ -1,3 +1,4 @@
+import("@opennextjs/cloudflare").then((m) => m.initOpenNextCloudflareForDev());
 /** @type {import('next').Config} */
 const nextConfig = {
   images: {
@@ -14,8 +15,20 @@ const nextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        // كل الصفحات ماعدا static assets
+        source: "/((?!_next/static|_next/image|favicon.ico).*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-store, must-revalidate",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
-
-import('@opennextjs/cloudflare').then(m => m.initOpenNextCloudflareForDev());
