@@ -21,7 +21,15 @@ export default async function Menu() {
           </span>
         </h2>
 
-        <MenuClient items={items ?? []} categories={categories ?? []} />
+        <MenuClient
+          items={items ?? []}
+          categories={
+            categories?.map((category) => ({
+              ...category,
+              id: String(category.id),
+            })) ?? []
+          }
+        />
       </div>
     </section>
   );
