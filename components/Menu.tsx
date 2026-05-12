@@ -15,7 +15,7 @@ export default async function Menu() {
           <span className="relative inline-block ml-2">
             for you
             <span
-              className="absolute -bottom-1 left-0 w-full h-1 rounded-full bg-primary opacity-30"
+              className="absolute -bottom-2 left-0 w-full h-[3px] rounded-full bg-primary opacity-30"
               aria-hidden="true"
             />
           </span>
