@@ -1,47 +1,48 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardTitle,
 } from "@/components/ui/card";
-import { ShoppingCart, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
+import { AddToCartButton } from "./AddToCartButton";
+import { Item } from "@/types/cart";
 interface ItemCardProps {
   className?: string;
-  name: string;
-  imgSrc: string;
-  description?: string;
-  price: number;
+  item: Item;
+  haveDescription?: boolean;
 }
 export function ItemCard({
   className,
-  name,
-  imgSrc,
-  description,
-  price,
+  item,
+  haveDescription = true,
 }: ItemCardProps) {
   return (
     <Card
       className={cn(
         className,
-        "min-w-70 overflow-hidden rounded-2xl shadow-md hover:-translate-y-1 duration-300",
+        "min-w-70 overflow-hidden rounded-2xl shadow-md hover:-translate-y-1 duration-300 group",
       )}
     >
       {/* Image and Star Rating Wrapper */}
       <div className="p-3 pb-0">
         <div className="relative h-44 w-full overflow-hidden rounded-2xl">
-          <Image
-            src={imgSrc}
-            alt="Hazelnut Latte"
-            fill
-            priority
-            className="object-cover"
-          />
+          {item?.image_url && (
+            <Image
+              src={item?.image_url}
+              alt={item.name}
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          )}
+
           <Badge
             variant="secondary"
             className="absolute left-2 top-2 flex items-center gap-1 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-bold text-black shadow-sm border-none"
@@ -51,29 +52,23 @@ export function ItemCard({
           </Badge>
           <Badge
             variant="secondary"
-            className="absolute right-2 top-2 flex items-center gap-1 rounded-full bg-white/90 px-2 py-0.5 text-sm font-bold text-black shadow-sm border-none"
+            className="absolute right-2 top-2 flex items-center gap-1 rounded-full bg-white/90 px-2 py-0.5 text-sm font-bold text-black shadow-sm border-none group-hover:text-primary duration-300"
           >
-            {price} EGP
+            {item?.price} EGP
           </Badge>
         </div>
       </div>
 
       <CardContent className="relative">
-        <CardTitle>{name}</CardTitle>
-        {description && (
+        <CardTitle>{item?.name}</CardTitle>
+        {haveDescription && (
           <CardDescription className="min-h-[48px]">
-            {description}
+            {item?.description}
           </CardDescription>
         )}
 
         <div className="flex items-center gap-2 mb-auto ">
-          <Button
-            size="icon"
-            className=" flex justify-between items-center gap-2 ml-auto w-fit px-3 shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-0.5"
-          >
-            <ShoppingCart className="h-4 w-4 text-white" />
-            <span>Add to cart</span>
-          </Button>
+          <AddToCartButton item={item} />
         </div>
       </CardContent>
     </Card>

@@ -13,14 +13,7 @@ export default async function SecondSection() {
     .limit(3);
 
   const itemCards = data?.map((item) => {
-    return (
-      <ItemCard
-        imgSrc={item?.image_url}
-        key={item.id}
-        name={item.name}
-        price={item.price}
-      />
-    );
+    return <ItemCard haveDescription={false} key={item.id} item={item} />;
   });
 
   return (

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-import { Cart } from "./Cart";
+import { CartDrawer } from "./CartDrawer";
 import { MobileMenu } from "./MobileMenu";
 const navLinks = [
   { label: "Home", href: "/" },
@@ -32,6 +32,7 @@ export default function Header() {
               src="/Logo.png"
               alt="Zaki Store logo"
               fill
+              sizes="36px"
               className="object-cover"
               priority
             />
@@ -64,7 +65,7 @@ export default function Header() {
 
         {/* ─── Right Actions ─── */}
         <div className="flex items-center gap-2">
-          <Cart />
+          <CartDrawer />
           <MobileMenu navLinks={navLinks} />
         </div>
       </div>
